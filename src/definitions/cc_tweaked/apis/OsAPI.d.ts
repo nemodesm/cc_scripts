@@ -72,4 +72,6 @@ declare namespace os {
         name: 'peripheral'
     ): LuaMultiReturn<['peripheral', direction]>;
     function pullEvent(name: 'char'): LuaMultiReturn<['char', string]>;
+
+    function epoch(locale?: 'ingame' | 'utc' | 'local'): number;
 }

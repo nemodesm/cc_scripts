@@ -6,7 +6,9 @@ declare namespace http {
         url: string,
         headers?: { [key: string]: string },
         binary?: boolean
-    ): Response | LuaMultiReturn<[nil, string, Response | nil]>;
+    ):
+        | LuaMultiReturn<[Response, nil, nil]>
+        | LuaMultiReturn<[nil, string, Response | nil]>;
     function get(request: {
         url: string;
         headers?: { [key: string]: string };
@@ -14,13 +16,17 @@ declare namespace http {
         method?: string;
         redirect?: boolean;
         timeout?: number;
-    }): Response | LuaMultiReturn<[nil, string, Response | nil]>;
+    }):
+        | LuaMultiReturn<[Response, nil, nil]>
+        | LuaMultiReturn<[nil, string, Response | nil]>;
     function post(
         url: string,
         body: string,
         headers?: { [key: string]: string },
         binary?: boolean
-    ): Response | LuaMultiReturn<[nil, string, Response | nil]>;
+    ):
+        | LuaMultiReturn<[Response, nil, nil]>
+        | LuaMultiReturn<[nil, string, Response | nil]>;
     function post(request: {
         url: string;
         body?: string;
@@ -29,7 +35,9 @@ declare namespace http {
         method?: string;
         redirect?: boolean;
         timeout?: number;
-    }): Response | LuaMultiReturn<[nil, string, Response | nil]>;
+    }):
+        | LuaMultiReturn<[Response, nil, nil]>
+        | LuaMultiReturn<[nil, string, Response | nil]>;
     function request(
         url: string,
         body?: string,
@@ -68,6 +76,7 @@ declare namespace http {
 
     type Response = fs.ReadHandle & {
         getResponseCode(): LuaMultiReturn<[number, string]>;
+        getResponseHeaders(): { [key: string]: string }[];
     };
     type Websocket = {
         receive(

@@ -72,7 +72,7 @@ declare type MonitorPeripheral = Peripheral & {
      * @returns The x position of the cursor.
      * @returns The y position of the cursor.
      */
-    getCursorPos(): { x: number; y: number };
+    getCursorPos(): LuaMultiReturn<[number, number]>;
 
     /**
      * Set the position of the cursor. Terminal writes will begin from this
@@ -103,7 +103,7 @@ declare type MonitorPeripheral = Peripheral & {
      * @returns 1. The terminal's width.
      * @returns 2. The terminal's height.
      */
-    getSize(): [number, number];
+    getSize(): LuaMultiReturn<[number, number]>;
 
     /**
      * Clears the terminal, filling it with the current background colour.
